@@ -6,7 +6,7 @@
   },
   "name": "service-o-matic",
   "description": "A node.js module that turns other modules (or other JS libraries) into RESTful web services",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "./lib/service-o-matic.js",
   "keywords": [
     "node",
