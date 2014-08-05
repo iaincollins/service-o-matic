@@ -3,9 +3,9 @@ Service-O-Matic
 
 The Service-O-Matic is a module for turning other modules into services.
 
-You can expose multiple modules as webservices on once instance.
+You can expose multiple modules as webservices in once instance.
 
-It will also generate lightweight documentation and an interactive form.
+It will also generate lightweight documentation and web forms for each method.
 
 It's currently a hack but if you find it useful or just intersting let me know.
 
