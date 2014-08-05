@@ -12,6 +12,7 @@ It's currently a hack but if you find it useful or just intersting let me know.
 me@iaincollins.com / @iaincollins
 
 Here's demo of it running the services shown in usage examples below:
+
 http://service-o-matic.iaincollins.com
 
 ### Limitations and supported features
@@ -36,7 +37,9 @@ To expose it as a webservice, all you need to do is this:
 
 ``` javascript
 var service = require('service-o-matic');
-service.createService('Random Password Generator', require('random-password-generator'), true);
+service.createService('Random Password Generator',
+                      require('random-password-generator'),
+                      true);
 service.startServices();
 ```
 
