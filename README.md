@@ -11,6 +11,9 @@ It's currently a hack but if you find it useful or just intersting let me know.
 
 me@iaincollins.com / @iaincollins
 
+Here's demo of it running the services shown in usage examples below:
+http://service-o-matic.iaincollins.com
+
 ### Limitations and supported features
 
 * Service-O-Matic does not **currently** support functions that require parameters to be passed to them in objects.
