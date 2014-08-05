@@ -70,7 +70,7 @@ var service = require('service-o-matic');
 var countryData = require('country-data');
 service.createService('Countries', countryData.countries, true);
 service.createService('Regions', countryData.regions, true);
-service.createService('Currencies Currencies', countryData.currencies, true);
+service.createService('Currencies', countryData.currencies, true);
 service.startServices(8080);
 ```
 
