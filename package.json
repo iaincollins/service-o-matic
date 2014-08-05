@@ -1,0 +1,38 @@
+{
+  "author": {
+    "name": "Iain Collins",
+    "email": "me@iaincollins.com",
+    "url": "http://iaincollins.com"
+  },
+  "name": "service-o-matic",
+  "description": "A node.js module that turns other modules (or other JS libraries) into RESTful web services",
+  "version": "0.1.1",
+  "main": "./lib/service-o-matic.js",
+  "keywords": [
+    "node",
+    "module",
+    "webservices",
+    "REST",
+    "RESTful",
+    "service",
+    "api"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/iaincollins/service-o-matic.git"
+  },
+  "dependencies": {
+    "express": "3.*",
+    "change-case": ">=2.1.1",
+    "crypto": ">=0.0.3"
+  },
+  "devDependencies" : {
+      "mocha": ">=1.19.0"
+  },
+  "scripts" : {
+      "test": "mocha test/*.js"
+  },
+  "engines": {
+    "node": "*"
+  }
+}
