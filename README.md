@@ -1,67 +1,57 @@
-Service-O-Matic
+Service-O-Matic 1.0
 =========
 
-The Service-O-Matic is a module for turning other modules into services.
+Service-O-Matic is a module for turning other modules into services.
 
-You can expose multiple modules as webservices in once instance.
+* It's great for API prototyping and getting things up and running quickly.
+* You can expose multiple modules/libriaries as webservices in once instance.
+* It generates documentation and web forms for each method.
 
-It will also generate lightweight documentation and web forms for each method.
+Email: Iain Collins <me@iaincollins.com> 
+Twitter: @iaincollins
 
-It's currently a hack but if you find it useful or just intersting let me know.
+## Limitations and supported features
 
-me@iaincollins.com / @iaincollins
+* Service-O-Matic supports both promises and methods that take callbacks (it attempts to work out which to support then tries to fall back gracefully).
+* The services are RESTful / JSON with Access-Control-Allow-Origin set to "*" (POST, PUT, GET, DELETE methods are supported).
+* Service-O-Matic does not support functions that take objects as their arguments. Everything sent over a RESTful interface is a string.
 
-Here's demo of it running the services shown in usage examples below:
-
-http://service-o-matic.iaincollins.com
-
-### Limitations and supported features
-
-* Service-O-Matic does not **currently** support functions that require parameters to be passed to them in objects.
-* Service-O-Matic **does** support both promises and methods that take callbacks.
-* The services are RESTful / JSON with Access-Control-Allow-Origin set to "*"
-* Error handling is almost non existant.
-
-### Usage with an existing module or library
+## Example usage
 
 Using Service-O-Matic is very straightforward. Let's take a simple example
 service like the Random Password Generator.
 
-Normally you might invoke it like this:
+It's normally invoked like this:
 ``` javascript
 var passwordGenerator = require('random-password-generator');
 var newPassword = passwordGenerator.generate();
 ```
 
-To expose it as a webservice, all you need to do is this:
+To expose it as a webservice with Service-O-Matic, all you need to do is:
 
 ``` javascript
 var service = require('service-o-matic');
-service.createService('Random Password Generator',
-                      require('random-password-generator'),
-                      true);
+service.addService('Password Generator', require('random-password-generator'));
 service.startServices();
 ```
 
-* The 1st argument to createService() is what you want to call your service.
-* The 2nd argument to createService() the module (or other JS library) you want to expose.
-* The 3rd argument being set to true tells Service-O-Matic to expose ALL properties of the library.
-
-Unless you specify the 3rd argument, Service-O-Matic will by default only expose
-properties marked as being inteded to be exposed as webservice. Currently only
-one module - newsQuery - actually does this though.
+* The 1st argument to addService() is what you want to call your service.
+* The 2nd argument to addService() the module/library you want to expose.
 
 ## Exposing multiple services
 
 The following example shows how to turn modules which provide a Dictionary 
-lookup and a Thesaurus checker into services. The homepage of the server ("/")
-will list all the services currently being exposed (which you can then click
-through to see their methods and the arguments each method takes).
+lookup and a Thesaurus checker into services.
+
+The homepage of the server ("/") will list all the services currently being exposed - you can then click through to see their methods and the arguments each method takes and test them out.
+
+In this example the third argument is passed - an array of methods to expose (which overrides the default behaviour, which is to expose all methods).
+
 
 ``` javascript
 var service = require('service-o-matic');
-service.createService('Dictionary', require('wordnet'), ['lookup']);
-service.createService('Thesaurus', require('thesaurus'), ['find']);
+service.addService('Dictionary', require('wordnet'), ['lookup']);
+service.addService('Thesaurus', require('thesaurus'), ['find']);
 service.startServices();
 ```
 
@@ -74,9 +64,9 @@ services from the countryData module:
 ``` javascript
 var service = require('service-o-matic');
 var countryData = require('country-data');
-service.createService('Countries', countryData.countries, true);
-service.createService('Regions', countryData.regions, true);
-service.createService('Currencies', countryData.currencies, true);
+service.addService('Countries', countryData.countries,);
+service.addService('Regions', countryData.regions);
+service.addService('Currencies', countryData.currencies);
 service.startServices(8080);
 ```
 
